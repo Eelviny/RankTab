@@ -14,7 +14,13 @@ public class Listeners implements Listener{
     @EventHandler(priority = EventPriority.NORMAL)
     public synchronized void onLogin(PlayerJoinEvent e){
         Player p = e.getPlayer();
-        p.setPlayerListName(TabColor.getTabColor(p)+abbreviate(p.getDisplayName()));
+        String color = TabColor.getTabColor(p);
+        if(isColorCode(color))
+            p.setPlayerListName(color+abbreviate(p.getDisplayName()));
+    }
+    
+    private boolean isColorCode(String color){
+        return color.contains("§") && !color.equals("§r") && !color.equals("§f");
     }
     
     private String abbreviate(String name){
