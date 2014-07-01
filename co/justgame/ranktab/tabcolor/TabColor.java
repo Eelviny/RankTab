@@ -18,7 +18,7 @@ public class TabColor {
                         String world = null;
                         try{
                             String prefix = chat.getPlayerInfoString(world, p.getName(), "prefix", "");
-                            if(prefix != null){
+                            if(prefix != null && prefix.length() >= 2){
                                 String colorCode = getFirstTwoChars(prefix); 
                                 if(isColorCode(colorCode)){
                                     return formatString(colorCode);
